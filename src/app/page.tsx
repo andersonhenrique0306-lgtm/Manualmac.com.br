@@ -90,6 +90,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-300">
                   {item.description}
+                  </p>
                 </a>
               
             ))}
