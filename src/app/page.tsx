@@ -22,7 +22,7 @@ export default function Home() {
       <section className="border-y border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-orange-300">Biblioteca técnica digital</p>
-          <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">Informação e conhecimento para manter equipamentos em operação.</h1>
+          <h1 className="max-w-5xl text-4xl font-black leading-tight md:text-6xl">Informação e conhecimento para manter equipamentos em operação.</h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-300">Conteúdo tecnico especializado em revisões, manutenção e reparação de equipamentos pesados dos setores rodoviário, construção, agrícola e florestal  .</p>
           <form action="#catalogo" className="mt-8 flex max-w-2xl gap-2 rounded-xl bg-white p-2">
             <input aria-label="Pesquisar" name="q" placeholder="Pesquise marca, modelo ou equipamento" className="min-w-0 flex-1 px-3 text-slate-900 outline-none" />
@@ -32,7 +32,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="catalogo" className="mx-auto max-w-6xl px-6 py-16">
+    <section className="bg-slate-950 border-b border-slate-800">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <div className="mb-8 text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-orange-400">
+              Explore nossa biblioteca
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-white">
+              Encontre a documentação por categoria
+            </h2>
+            <p className="mt-3 text-slate-300">
+              Informação técnica para diferentes setores e equipamentos.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: "🚛",
+                title: "RODOVIÁRIOS",
+                description: "Caminhões e veículos pesados."
+              },
+              {
+                icon: "🚜",
+                title: "AGRÍCOLAS",
+                description: "Tratores e máquinas agrícolas."
+              },
+              {
+                icon: "🏗️",
+                title: "CONSTRUÇÃO E TERRAPLANAGEM",
+                description: "Escavadeiras, retroescavadeiras e pás-carregadeiras."
+              },
+              {
+                icon: "🌲",
+                title: "FLORESTAIS",
+                description: "Tratores florestais, máquinas de colheita e equipamentos de apoio."
+              }
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-slate-700 bg-slate-900 p-6 transition hover:border-orange-400"
+              >
+                <div className="text-4xl">{item.icon}</div>
+                <h3 className="mt-4 text-lg font-black text-orange-400">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="catalog
+      o" className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-7 flex flex-wrap items-end justify-between gap-3">
           <div><p className="text-sm text-orange-300">DOCUMENTAÇÃO DIGITAL</p><h2 className="mt-1 text-3xl font-bold">Manuais em destaque</h2></div>
           <span className="text-sm text-slate-400">Vitrine demonstrativa</span>
