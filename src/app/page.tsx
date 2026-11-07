@@ -22,8 +22,8 @@ export default function Home() {
       <section className="border-y border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-orange-300">Biblioteca técnica digital</p>
-          <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">A documentação certa para sua máquina.</h1>
-          <p className="mt-5 max-w-2xl text-lg text-slate-300">Manuais de serviço, catálogos de peças e documentação técnica para caminhões, tratores e máquinas pesadas.</p>
+          <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">Informação e conhecimento para manter equipamentos em operação.</h1>
+          <p className="mt-5 max-w-2xl text-lg text-slate-300">Conteúdo tecnico especializado em revisões, manutenção e reparação de equipamentos pesados dos setores rodoviário, construção, agrícola e florestal  .</p>
           <form action="#catalogo" className="mt-8 flex max-w-2xl gap-2 rounded-xl bg-white p-2">
             <input aria-label="Pesquisar" name="q" placeholder="Pesquise marca, modelo ou equipamento" className="min-w-0 flex-1 px-3 text-slate-900 outline-none" />
             <button className="rounded-lg bg-orange-400 px-5 py-3 font-bold text-slate-950">Pesquisar</button>
