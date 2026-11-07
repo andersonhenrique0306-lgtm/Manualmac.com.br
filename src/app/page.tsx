@@ -51,23 +51,33 @@ export default function Home() {
               {
                 icon: "🚛",
                 title: "RODOVIÁRIOS",
+                slug:"rodoviarios" ,
                 description: "Caminhões e veículos pesados."
               },
               {
                 icon: "🚜",
+                slug:"agricolas",
                 title: "AGRÍCOLAS",
                 description: "Tratores e máquinas agrícolas."
               },
               {
                 icon: "🏗️",
+                slug:"contrução",
                 title: "CONSTRUÇÃO E TERRAPLANAGEM",
                 description: "Escavadeiras, retroescavadeiras e pás-carregadeiras."
               },
               {
                 icon: "🌲",
                 title: "FLORESTAIS",
+                slug:"florestais",
                 description: "Tratores florestais, máquinas de colheita e equipamentos de apoio."
-              }
+              },
+              { 
+                icon: " MOTOR",
+                title: "MOTORES",
+                slug: "motores" ,
+                description: "documentação tecnica e pesquisa de motores",
+                },
             ].map((item) => (
               <div
                 key={item.title}
