@@ -79,8 +79,9 @@ export default function Home() {
                 description: "documentação tecnica e pesquisa de motores",
                 },
             ].map((item) => (
-              <div
+              <a
                 key={item.title}
+                href={'/categoria/${item.slug}'}
                 className="rounded-xl border border-slate-700 bg-slate-900 p-6 transition hover:border-orange-400"
               >
                 <div className="text-4xl">{item.icon}</div>
@@ -89,8 +90,8 @@ export default function Home() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-300">
                   {item.description}
-                </p>
-              </div>
+                </a>
+              
             ))}
           </div>
         </div>
