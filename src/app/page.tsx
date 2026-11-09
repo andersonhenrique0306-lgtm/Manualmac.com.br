@@ -62,7 +62,7 @@ export default function Home() {
               },
               {
                 icon: "🏗️",
-                slug:"construção e terraplanagem",
+                slug:"construcao",
                 title: "CONSTRUÇÃO E TERRAPLANAGEM",
                 description: "Escavadeiras, retroescavadeiras e pás-carregadeiras."
               },
