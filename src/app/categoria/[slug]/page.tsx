@@ -17,19 +17,33 @@ const marcasRodoviarias = [
   "Volkswagen Caminhões",
 ];
 
-const documentosRodoviarios = [
+const documentosRodoviarios: Record<
+  string,
   {
-    id: "volvo-fh4",
-    marca: "Volvo",
-    modelo: "FH4",
-    titulo: "Diagrama Elétrico Completo Volvo FH4",
-    tipo: "Diagrama elétrico",
-    formato: "PDF",
-    paginas: 304,
-    preco: "R$ 15,00",
-    disponivel: false,
-  },
-];
+    titulo: string;
+    modelo: string;
+    tipo: string;
+    formato: string;
+    paginas: number;
+    preco: string;
+    status: string;
+  }[]
+> = {
+  Volvo: [
+    {
+      titulo: "Diagrama Elétrico Completo Volvo FH4",
+      modelo: "FH4",
+      tipo: "Diagrama elétrico",
+      formato: "PDF",
+      paginas: 304,
+      preco: "R$ 15,00",
+      status: "Em preparação",
+    },
+  ],
+  Scania: [],
+  "Mercedes-Benz": [],
+  "Volkswagen Caminhões": [],
+};
 
 export default async function CategoriaPage({
   params,
@@ -47,7 +61,10 @@ export default async function CategoriaPage({
     <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
       <div className="mx-auto max-w-5xl">
 
-        <Link href="/" className="text-sm font-bold text-orange-400">
+        <Link
+          href="/"
+          className="font-bold text-orange-400 hover:text-orange-300"
+        >
           ← MANUALMAC
         </Link>
 
@@ -60,72 +77,77 @@ export default async function CategoriaPage({
         </h1>
 
         <p className="mt-4 text-slate-300">
-          Encontre manuais, catálogos de peças e documentação técnica
-          para equipamentos e veículos.
+          Selecione uma marca para visualizar os documentos técnicos disponíveis.
         </p>
 
         {slug === "rodoviarios" && (
-          <>
-            <h2 className="mt-12 text-xl font-bold">
-              Fabricantes
-            </h2>
+          <section className="mt-10 space-y-4">
 
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {marcasRodoviarias.map((marca) => (
-                <div
+            {marcasRodoviarias.map((marca) => {
+              const documentos = documentosRodoviarios[marca] || [];
+
+              return (
+                <details
                   key={marca}
-                  className="rounded-xl border border-slate-700 bg-slate-900 p-5"
+                  className="group overflow-hidden rounded-xl border border-slate-700 bg-slate-900"
                 >
-                  <h3 className="font-bold text-white">{marca}</h3>
-                  <p className="mt-2 text-sm text-slate-400">
-                    Documentação técnica e manuais
-                  </p>
-                </div>
-              ))}
-            </div>
+                  <summary className="flex cursor-pointer list-none items-center justify-between p-5 font-bold hover:bg-slate-800">
+                    <span className="text-lg">{marca}</span>
 
-            <h2 className="mt-12 text-xl font-bold">
-              Documentos disponíveis no catálogo
-            </h2>
+                    <span className="text-xl text-orange-400 group-open:rotate-180">
+                      ▼
+                    </span>
+                  </summary>
 
-            <div className="mt-5 space-y-4">
-              {documentosRodoviarios.map((documento) => (
-                <article
-                  key={documento.id}
-                  className="rounded-xl border border-slate-700 bg-slate-900 p-6"
-                >
-                  <p className="text-sm font-bold text-orange-400">
-                    {documento.marca} • {documento.modelo}
-                  </p>
+                  <div className="border-t border-slate-700 p-5">
+                    {documentos.length > 0 ? (
+                      <div className="space-y-4">
+                        {documentos.map((documento, index) => (
+                          <article
+                            key={index}
+                            className="rounded-lg border border-slate-700 bg-slate-950 p-5"
+                          >
+                            <p className="text-sm font-bold text-orange-400">
+                              {marca} • {documento.modelo}
+                            </p>
 
-                  <h3 className="mt-2 text-xl font-bold">
-                    {documento.titulo}
-                  </h3>
+                            <h3 className="mt-2 text-lg font-bold">
+                              {documento.titulo}
+                            </h3>
 
-                  <p className="mt-3 text-sm text-slate-400">
-                    {documento.tipo} • {documento.formato} •{" "}
-                    {documento.paginas} páginas
-                  </p>
+                            <p className="mt-3 text-sm text-slate-400">
+                              {documento.tipo} • {documento.formato} •{" "}
+                              {documento.paginas} páginas
+                            </p>
 
-                  <p className="mt-5 text-2xl font-black">
-                    {documento.preco}
-                  </p>
+                            <p className="mt-4 text-2xl font-black">
+                              {documento.preco}
+                            </p>
 
-                  <span className="mt-4 inline-block rounded-lg bg-slate-800 px-4 py-3 text-sm text-slate-300">
-                    {documento.disponivel
-                      ? "Disponível para compra"
-                      : "Cadastro em preparação"}
-                  </span>
-                </article>
-              ))}
-            </div>
-          </>
+                            <span className="mt-3 inline-block rounded-md bg-slate-800 px-3 py-2 text-sm text-slate-300">
+                              {documento.status}
+                            </span>
+                          </article>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-slate-400">
+                        Estamos organizando os documentos desta marca.
+                        Em breve teremos novidades.
+                      </p>
+                    )}
+                  </div>
+                </details>
+              );
+            })}
+
+          </section>
         )}
 
         {slug !== "rodoviarios" && (
-          <div className="mt-12 rounded-xl border border-slate-700 bg-slate-900 p-8">
+          <div className="mt-10 rounded-xl border border-slate-700 bg-slate-900 p-6">
             <p className="text-slate-300">
-              Estamos organizando o catálogo de documentos desta categoria.
+              Estamos organizando os documentos desta categoria.
             </p>
           </div>
         )}
