@@ -81,7 +81,7 @@ export default function Home() {
             ].map((item) => (
               <a
                 key={item.title}
-                href={`/categoria/${item.slug}`}
+                href={"/categoria/"+item.slug}
                 className="rounded-xl border border-slate-700 bg-slate-900 p-6 transition hover:border-orange-400"
               >
                 <div className="text-4xl">{item.icon}</div>
